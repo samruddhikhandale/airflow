@@ -5,7 +5,7 @@
 		"../scripts/ci/docker-compose/backend-sqlite.yml"
 	],
 	"service": "airflow",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/opt/airflow",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
@@ -20,6 +20,9 @@
 	// https://github.com/microsoft/vscode-remote-release/issues/2084#issuecomment-989756268
 	// "initializeCommand": "if [ ${CODESPACES} != \"true\" ]; then cd \"${localWorkspaceFolder}\" && git config --local user.email \"$(git config user.email)\" && git config --local user.name \"$(git config user.name)\"; fi",
 	"overrideCommand": true,
+	"postAttachCommand": {
+		"Welcome message": "cat .devcontainer/welcome-message.txt"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {

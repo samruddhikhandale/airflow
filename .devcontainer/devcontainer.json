@@ -5,7 +5,11 @@
 		"../scripts/ci/docker-compose/backend-sqlite.yml"
 	],
 	"service": "airflow",
-	"workspaceFolder": "/opt/airflow",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
@@ -18,11 +22,7 @@
 
 	// for users who use non-standard git config patterns
 	// https://github.com/microsoft/vscode-remote-release/issues/2084#issuecomment-989756268
-	"initializeCommand": "cd \"${localWorkspaceFolder}\" && git config --local user.email \"$(git config user.email)\" && git config --local user.name \"$(git config user.name)\"",
-
-	// Copies over the welcome message
-	"onCreateCommand": "sudo cp .devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
-
+	// "initializeCommand": "if [ ${CODESPACES} != \"true\" ]; then cd \"${localWorkspaceFolder}\" && git config --local user.email \"$(git config user.email)\" && git config --local user.name \"$(git config user.name)\"; fi",
 	"overrideCommand": true,
 
 	// Configure tool-specific properties.
